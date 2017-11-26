@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_workspace_file>
+	<Workspace title="Getting Started">
+		<Project filename="getting-started.cbp">
+			<Depends filename="../../libraries/SFML/SFML.cbp" />
+		</Project>
+		<Project filename="../../libraries/SFML/SFML.cbp" />
+	</Workspace>
+</CodeBlocks_workspace_file>

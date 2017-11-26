@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="getting-started" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="../../debug/getting-started/bin/getting-started" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add directory="include" />
+				</Compiler>
+				<Environment>
+					<Variable name="SFML_SUFFIX" value="-d" />
+					<Variable name="TARGET" value="debug" />
+				</Environment>
+			</Target>
+			<Target title="Release">
+				<Option output="../../release/getting-started/bin/getting-started" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-fexpensive-optimizations" />
+					<Add option="-O3" />
+					<Add directory="include" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+				<Environment>
+					<Variable name="SFML_SUFFIX" value="" />
+					<Variable name="TARGET" value="release" />
+				</Environment>
+			</Target>
+			<Environment>
+				<Variable name="SFML_SHARED" value="1" />
+			</Environment>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-std=c++14" />
+			<Add option="-m64" />
+			<Add option="-mfpmath=sse -m128bit-long-double -msse3 -mmmx -mthreads -ftree-vectorize" />
+			<Add directory="../../libraries/SFML/include" />
+		</Compiler>
+		<Linker>
+			<Add option="-m64" />
+			<Add library="sfml-network$(SFML_SUFFIX)" />
+			<Add library="sfml-audio$(SFML_SUFFIX)" />
+			<Add library="sfml-graphics$(SFML_SUFFIX)" />
+			<Add library="sfml-window$(SFML_SUFFIX)" />
+			<Add library="sfml-system$(SFML_SUFFIX)" />
+			<Add library="sfml-main$(SFML_SUFFIX)" />
+			<Add directory="../../libraries/SFML/lib" />
+		</Linker>
+		<ExtraCommands>
+			<Add before="python ../../libraries/SFML/sfml-install.py --lib=../../libraries/SFML/lib/ --out=../../$(TARGET)/getting-started/bin --target=$(TARGET) --shared=$(SFML_SHARED)" />
+		</ExtraCommands>
+		<Unit filename="src/main.cpp" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
