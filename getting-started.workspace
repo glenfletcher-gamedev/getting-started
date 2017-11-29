@@ -3,7 +3,11 @@
 	<Workspace title="Getting Started">
 		<Project filename="getting-started.cbp">
 			<Depends filename="../../libraries/SFML/SFML.cbp" />
+			<Depends filename="../../libraries/AGL/AGL.cbp" />
 		</Project>
 		<Project filename="../../libraries/SFML/SFML.cbp" />
+		<Project filename="../../libraries/AGL/AGL.cbp">
+			<Depends filename="../../libraries/SFML/SFML.cbp" />
+		</Project>
 	</Workspace>
 </CodeBlocks_workspace_file>

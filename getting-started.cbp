@@ -16,6 +16,7 @@
 					<Add directory="include" />
 				</Compiler>
 				<Environment>
+					<Variable name="AGL_SUFFIX" value="d" />
 					<Variable name="SFML_SUFFIX" value="-d" />
 					<Variable name="TARGET" value="debug" />
 				</Environment>
@@ -34,6 +35,7 @@
 					<Add option="-s" />
 				</Linker>
 				<Environment>
+					<Variable name="AGL_SUFFIX" value="" />
 					<Variable name="SFML_SUFFIX" value="" />
 					<Variable name="TARGET" value="release" />
 				</Environment>
@@ -48,9 +50,11 @@
 			<Add option="-m64" />
 			<Add option="-mfpmath=sse -m128bit-long-double -msse3 -mmmx -mthreads -ftree-vectorize" />
 			<Add directory="../../libraries/SFML/include" />
+			<Add directory="../../libraries/AGL/include" />
 		</Compiler>
 		<Linker>
 			<Add option="-m64" />
+			<Add library="AGL$(AGL_SUFFIX)" />
 			<Add library="sfml-network$(SFML_SUFFIX)" />
 			<Add library="sfml-audio$(SFML_SUFFIX)" />
 			<Add library="sfml-graphics$(SFML_SUFFIX)" />
@@ -58,11 +62,13 @@
 			<Add library="sfml-system$(SFML_SUFFIX)" />
 			<Add library="sfml-main$(SFML_SUFFIX)" />
 			<Add directory="../../libraries/SFML/lib" />
+			<Add directory="../../libraries/AGL/lib" />
 		</Linker>
 		<ExtraCommands>
 			<Add before="python ../../libraries/SFML/sfml-install.py --lib=../../libraries/SFML/lib/ --out=../../$(TARGET)/getting-started/bin --target=$(TARGET) --shared=$(SFML_SHARED)" />
 		</ExtraCommands>
-		<Unit filename="src/main.cpp" />
+		<Unit filename="include/gettingstarted.h" />
+		<Unit filename="src/gettingstarted.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
