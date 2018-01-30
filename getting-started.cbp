@@ -13,6 +13,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add option="-DDEBUG=1" />
 					<Add directory="include" />
 				</Compiler>
 				<Environment>
@@ -38,6 +39,23 @@
 					<Variable name="AGL_SUFFIX" value="" />
 					<Variable name="SFML_SUFFIX" value="" />
 					<Variable name="TARGET" value="release" />
+				</Environment>
+			</Target>
+			<Target title="Debug Asm">
+				<Option output="../../debug/getting-started/bin/getting-started" prefix_auto="1" extension_auto="1" />
+				<Option object_output="asm/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add option="-Wa,-aslhd" />
+					<Add option="-DDEBUG=1" />
+					<Add directory="include" />
+				</Compiler>
+				<Environment>
+					<Variable name="AGL_SUFFIX" value="d" />
+					<Variable name="SFML_SUFFIX" value="-d" />
+					<Variable name="TARGET" value="debug" />
 				</Environment>
 			</Target>
 			<Environment>
@@ -67,7 +85,14 @@
 		<ExtraCommands>
 			<Add before="python ../../libraries/SFML/sfml-install.py --lib=../../libraries/SFML/lib/ --out=../../$(TARGET)/getting-started/bin --target=$(TARGET) --shared=$(SFML_SHARED)" />
 		</ExtraCommands>
+		<Unit filename="include/ball.h" />
+		<Unit filename="include/ball_getstate.h" />
+		<Unit filename="include/barrier.h" />
 		<Unit filename="include/gettingstarted.h" />
+		<Unit filename="include/quadratic.h" />
+		<Unit filename="include/vector.h" />
+		<Unit filename="src/ball.cpp" />
+		<Unit filename="src/barrier.cpp" />
 		<Unit filename="src/gettingstarted.cpp" />
 		<Extensions>
 			<code_completion />
